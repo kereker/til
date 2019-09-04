@@ -1,7 +1,13 @@
-## 20190903
-
+## gitコマンドメモ
 slackの個人メモにまとめておいたやつ。  
 順不同にごりごりしていく(後に整理する忘れない)
+
+### リモートリポジトリをcloneする
+`git clone git@github.com:<user name>/<repository name>.git` : SSL  
+`git clone https://hogehoge.com/hoge/hoge` : https  
+
+### gitリポジトリを作成する
+`git init`
 
 ### リモートの最新情報を取得する(ファイルはマージされない)
 `git fetch`
