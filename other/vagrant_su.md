@@ -1,3 +1,4 @@
+## Vagrantでrootになるためには
 ### そもそも`su`って何？
 - ユーザーを切り替えるコマンドのこと
   - `Substitute User`の略
