@@ -47,8 +47,5 @@ $ vagrant reload
 ==> default: flag to force provisioning. Provisioners marked to run always will still run.
 ==> default: Running provisioner: shell...
     default: Running: inline script
-    default: Redirecting to /bin/systemctl restart httpd.service
+    default: Redirecting to /bin/systemctl restart httpd.service    // <-ここ
 ```
-
-### とりあえず
-さっき入れたばかりなので様子見。明日の朝実行結果確認してみる。
