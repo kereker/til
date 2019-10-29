@@ -8,8 +8,7 @@
 |3| | | |
 
 ### こういうことをしたい
-`2019/01/02`以降のレコードが取りたい。  
-↓  
+`2019/01/02`以降のレコードが取りたい。↓  
 ```sql
 SELECT
     *
@@ -25,7 +24,9 @@ Query failed: ERROR: invalid value &quot;//&quot; for &quot;YYYY&quot; DETAIL: V
 
 ### どういうこと？
 `TO_DATE(year || '/' || month || '/' || day, 'YYYY/MM/DD')` は、カラム同士を結合させて、日付を作っている。  
-ただし、値が**空文字**だったらエラーが出る。だって結合後の値は `//` だもの。
+ただし、値が**空文字**だったらエラーが出る。空文字のときの`TO_DATE()`の引数は↓  
+`TO_DATE('//', 'YYYY/MM/DD')`  
+というふうになってしまうため。
 
 ### 回避策
 職場の方から教えて頂いた `COALESCE()` 関数を使う。  
@@ -50,7 +51,9 @@ FROM
 WHERE
     TO_DATE(COALESCE(NULLIF(year, ''), '0') || '/' || COALESCE(NULLIF(month, ''), '0') || '/' || COALESCE(NULLIF(day, ''), '0'), 'YYYY/MM/DD') >= '2019/01/02'
 ```
-とすると、
+とすると、カラムが空文字のとき、`TO_DATE()`の引数はこう↓なって、  
+`TO_DATE('0/0/0', 'YYYY/MM/DD')`  
+取ってきてくれるデータは、
 
 |id|year|month|day|
 |:--:|--:|--:|--:|
