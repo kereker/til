@@ -33,7 +33,7 @@ $csv = implode(',', $csv_contents);
 逆のことをしたい場合は`explode()`という関数を使うと、文字列から配列に変換できる(要結合子)。
 
 ### 他
-#### if の無駄遣い
+#### if の無駄遣い その１
 昔やった覚えがあるけど…。
 ```php
 $result = $_POST['result'];
@@ -41,7 +41,7 @@ $result = $_POST['result'];
 if ($result) {
     // NOP
 } else {
-    $msg = 'faild';
+    $msg = 'failed';
     throw new Exeption($msg);
 }
 ```
@@ -50,9 +50,22 @@ if ($result) {
 $result = $_POST['result'];
 
 if (!$result) {
-    $msg = 'faild';
+    $msg = 'failed';
     throw new Exeption($msg);
 }
+```
+#### if の無駄遣い その２
+```php
+$flg = true;
+if ($a == 1) {
+    $flg = true;
+} else {
+    $flg = false;
+}
+```
+こうすればスマートになる
+```php
+$flg = ($a == 1);
 ```
 #### throwしたあとの処理
 ```php
