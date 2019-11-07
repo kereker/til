@@ -71,7 +71,7 @@ $flg = ($a == 1);
 ```php
 if (!$result) {
     $msg = 'faild';
-    throw new Exeption($msg);
+    throw new Exception($msg);
     exit();
 }
 ```
